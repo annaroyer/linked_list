@@ -48,7 +48,7 @@ class LinkedListTest < Minitest::Test
     linked_list.append(5)
     linked_list.append(4)
 
-    linked_list.prepend(3)
+    assert_equal 3, linked_list.prepend(3)
 
     assert_equal 3, linked_list.count
     assert_equal "354", linked_list.to_s
