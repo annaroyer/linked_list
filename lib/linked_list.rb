@@ -29,10 +29,9 @@ class LinkedList
     if @head.nil?
       @head = Node.new(value)
     else
-      new_head = Node.new(value)
-      new_head.next_node = @head
-      @head = new_head
+      @head = Node.new(value, @head)
     end
+    return value
   end
 
   def insert(index, value)
