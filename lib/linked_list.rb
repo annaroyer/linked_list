@@ -1,4 +1,3 @@
-require 'pry'
 class LinkedList
   attr_reader :head
 
@@ -37,5 +36,15 @@ class LinkedList
   def insert(index, value)
     return prepend(value) if index == 0
     @head.insert(index, value)
+  end
+
+  def pop
+    @head.traverse.delete
+  end
+
+  def shift
+    value = @head.data
+    @head = @head.next_node
+    return value
   end
 end

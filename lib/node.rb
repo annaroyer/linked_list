@@ -1,11 +1,11 @@
-require 'pry'
 class Node
   attr_reader :data, :next_node
   attr_accessor :next_node
 
-  def initialize(data, next_node=nil)
+  def initialize(data, next_node=nil, parent=nil)
     @data = data
     @next_node = next_node
+    @parent = parent
   end
 
   def count_list(count=0)
@@ -19,8 +19,8 @@ class Node
     next_node.traverse
   end
 
-  def append(value, tail=nil)
-    @next_node = Node.new(value, tail)
+  def append(value, tail=nil, parent=self)
+    @next_node = Node.new(value, tail, parent)
     return value
   end
 
@@ -36,5 +36,10 @@ class Node
       next_node.insert(index, value)
     end
     append(value, next_node)
+  end
+
+  def delete
+    @parent.next_node = nil
+    return data
   end
 end
