@@ -3,7 +3,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/linked_list'
 require './lib/node'
-require 'pry'
 
 class LinkedListTest < Minitest::Test
   def test_it_has_a_head
@@ -64,13 +63,16 @@ class LinkedListTest < Minitest::Test
     assert_equal "3854", linked_list.to_s
   end
 
-  # def test_it_can_pop_off_last_node
-  #   linked_list = LinkedList.new
-  #   linked_list.append(5)
-  #   linked_list.append(4)
-  #   linked_list.prepend(3)
-  #
-  #   assert_equal 4, linked_list.pop
-  #   assert_equal
-  # end
+  def test_it_can_pop_or_shift_off_last_node
+    linked_list = LinkedList.new
+    linked_list.append(5)
+    linked_list.append(4)
+    linked_list.prepend(3)
+    linked_list.insert(1, 8)
+
+    assert_equal 4, linked_list.pop
+    assert_equal "385", linked_list.to_s
+    assert_equal 3, linked_list.shift
+    assert_equal "85", linked_list.to_s
+  end
 end
